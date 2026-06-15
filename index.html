@@ -207,80 +207,7 @@
           <div class="content">
             <div class="inner">
               <h2>News</h2>
-              <ul>
-                <li>
-                  <a
-                    href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/cnn-features-the-research-of-the-biomorphic-intelligence-lab"
-                    target="_blank" rel="noopener noreferrer"
-                  >
-                    <p>
-                      CNN features the research of the Biomorphic Intelligence
-                      lab!
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.tudelft.nl/en/2023/lr/veni-grant-for-aerial-robots-in-a-tangible-world-drones-with-the-sense-of-touch-act-upon-their-surroundings"
-                    target="_blank" rel="noopener noreferrer"
-                  >
-                    <p>
-                      Veni grant for ‘Aerial Robots in a Tangible World: <br />
-                      Drones with the Sense of Touch Act upon Their
-                      Surroundings’
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.tudelft.nl/en/2025/lr/salua-hamaza-new-faculty-diversity-inclusion-officer"
-                    target="_blank" rel="noopener noreferrer"
-                  >
-                    <p>
-                      Salua Hamaza new Faculty Diversity & Inclusion Officer
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/biomorphic-intelligence-lab-attends-iros-2024-in-abu-dhabi"
-                    target="_blank" rel="noopener noreferrer"
-                  >
-                    <p>
-                      Biomorphic Intelligence Lab Attends IROS 2024 in Abu Dhabi
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/a-biomorphic-whisker-sensor-for-aerial-tactile-applications"
-                    target="_blank" rel="noopener noreferrer"
-                  >
-                    <p>
-                      A Biomorphic Whisker Sensor for Aerial Tactile
-                      Applications
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/albero-agile-landing-on-branches-for-environmental-robotics-operations"
-                    target="_blank" rel="noopener noreferrer"
-                  >
-                    <p>
-                      ALBERO: Agile Landing on Branches for Environmental
-                      Robotics Operations
-                    </p>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://delta.tudelft.nl/en/article/ai-3-it-bird-it-drone"
-                    target="_blank" rel="noopener noreferrer"
-                  >
-                    <p>AI #3: Is it a bird? Is it a drone?</p>
-                  </a>
-                </li>
+              <ul id="news-list">
               </ul>
             </div>
           </div>
@@ -759,6 +686,16 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      fetch('data/news.json', { cache: 'no-store' })
+        .then(function(r) { return r.json(); })
+        .then(function(items) {
+          var ul = document.getElementById('news-list');
+          ul.innerHTML = items.map(function(item) {
+            return '<li><a href="' + item.url + '" target="_blank" rel="noopener noreferrer"><p>' + item.title + '</p></a></li>';
+          }).join('');
+        });
+    </script>
     <script>
       // Set --cols on each group row so items distribute into ~2 balanced rows
       document.querySelectorAll('#three .actions').forEach(function(ul) {
