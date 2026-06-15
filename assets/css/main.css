@@ -2925,6 +2925,29 @@ body.is-preload #sidebar nav ul li {
   }
 }
 
+/* News list – inline buttons */
+#news-list li > a p {
+  display: inline;
+  margin: 0;
+}
+
+#news-list .news-buttons {
+  display: inline;
+  margin-left: 0.6em;
+}
+
+#news-list .news-buttons .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.2em;
+  padding: 0.5em;
+  font-size: 0.65em;
+  line-height: 1;
+  height: 1.6em;
+  vertical-align: middle;
+}
+
 /* Group member figures – uniform size, responsive wrapping */
 #three .content > .actions,
 #three .inner > .actions {

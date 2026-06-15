@@ -692,7 +692,14 @@
         .then(function(items) {
           var ul = document.getElementById('news-list');
           ul.innerHTML = items.map(function(item) {
-            return '<li><a href="' + item.url + '" target="_blank" rel="noopener noreferrer"><p>' + item.title + '</p></a></li>';
+            var btns = [
+              item.article  ? '<a href="' + item.article  + '" class="button small" target="_blank" rel="noopener noreferrer">Article</a>'  : '',
+              item.video    ? '<a href="' + item.video    + '" class="button small" target="_blank" rel="noopener noreferrer">Video</a>'    : '',
+              item.linkedin ? '<a href="' + item.linkedin + '" class="button small" target="_blank" rel="noopener noreferrer">LinkedIn</a>' : '',
+            ].filter(Boolean).join(' ');
+            return '<li><a href="' + item.url + '" target="_blank" rel="noopener noreferrer"><p>' + item.title + '</p></a>'
+              + (btns ? '<div class="news-buttons">' + btns + '</div>' : '')
+              + '</li>';
           }).join('');
         });
     </script>
