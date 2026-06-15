@@ -2925,6 +2925,11 @@ body.is-preload #sidebar nav ul li {
   }
 }
 
+/* Spotlight reversed – image on right, content on left */
+.spotlights.spotlight-reverse > section {
+  flex-direction: row-reverse;
+}
+
 /* News list – inline buttons */
 #news-list li > a p {
   display: inline;
