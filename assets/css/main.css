@@ -2957,27 +2957,46 @@ body.is-preload #sidebar nav ul li {
 #three .content > .actions,
 #three .inner > .actions {
   display: grid;
-  grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
-  gap: 1.5em;
+  grid-template-columns: repeat(var(--cols, 4), minmax(0, 220px));
+  justify-content: start;
+  gap: 2em 2em;
   padding: 0;
-  margin: 0 0 1.5em 0;
+  margin: 0 0 2.5em 0;
   width: 100%;
   list-style: none;
+}
+
+/* Below the desktop breakpoint, let the rows reflow on their own */
+@media screen and (max-width: 980px) {
+  #three .content > .actions,
+  #three .inner > .actions {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
 }
 
 @media screen and (max-width: 736px) {
   #three .content > .actions,
   #three .inner > .actions {
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1.5em 1em;
   }
 }
 
 #three .content > .actions li,
 #three .inner > .actions li {
   min-width: 0;
-  overflow: hidden;
+  /* the theme adds padding to stacked action items – the grid handles spacing */
+  padding: 0;
   display: flex;
   justify-content: center;
+}
+
+#three .content > .actions li > .image,
+#three .inner > .actions li > .image {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  border-bottom: 0;
 }
 
 /* Lab buttons – left-aligned, wrap on mobile */
@@ -3000,21 +3019,31 @@ body.is-preload #sidebar nav ul li {
 #three figure {
   text-align: center;
   margin: 0;
-  width: 120px;
-  flex-shrink: 0;
+  width: 100%;
 }
 
 #three figure img {
-  width: 120px;
-  height: 150px;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  height: auto;
   object-fit: cover;
   object-position: top center;
   border-radius: 8px;
-  display: inline-block;
+  display: block;
+  transition: transform 0.2s ease-in-out;
+}
+
+#three .content > .actions li > .image:hover img,
+#three .inner > .actions li > .image:hover img {
+  transform: translateY(-3px);
 }
 
 #three figure figcaption {
-  width: 120px;
-  word-wrap: break-word;
+  /* reserve two lines so cards with wrapping names stay aligned */
+  min-height: 2.8em;
+  margin-top: 0.65em;
+  font-size: 0.9em;
+  line-height: 1.4;
+  overflow-wrap: break-word;
 }
 /*# sourceMappingURL=main.css.map */
