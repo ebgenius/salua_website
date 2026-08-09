@@ -2953,6 +2953,15 @@ body.is-preload #sidebar nav ul li {
   vertical-align: middle;
 }
 
+/* Images carry width/height attributes so the browser can reserve their space
+   before they load; keep them fluid so the attributes don't fix the height. */
+.image.fit,
+.image.fit img,
+.image.main,
+.image.main img {
+  height: auto;
+}
+
 /* Group member figures – uniform size, responsive wrapping */
 #three .content > .actions,
 #three .inner > .actions {
