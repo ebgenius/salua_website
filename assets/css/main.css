@@ -2953,6 +2953,63 @@ body.is-preload #sidebar nav ul li {
   vertical-align: middle;
 }
 
+/* Intro – once .split stacks (<= 980px) the portrait would drop below the whole
+   text column, leaving a wall of text on the first screen. Re-lay the intro as a
+   grid so the portrait sits beside the name and the body text keeps full width. */
+@media screen and (max-width: 980px) {
+  #intro .intro-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 34%;
+    grid-template-areas:
+      "head photo"
+      "body body";
+    column-gap: 1.5em;
+    align-items: center;
+  }
+
+  /* Unwrap the text column so head and body become grid items themselves. */
+  #intro .intro-split > section:first-child,
+  #intro .intro-split > section:first-child > .content {
+    display: contents;
+  }
+
+  #intro .intro-head {
+    grid-area: head;
+  }
+
+  #intro .intro-body {
+    grid-area: body;
+  }
+
+  /* Undo the stacked-split treatment (full width, separator, top padding). */
+  #intro .intro-photo {
+    grid-area: photo;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-top: 0 !important;
+  }
+
+  #intro .intro-photo img {
+    border-radius: 0.25em;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  #intro .intro-split {
+    column-gap: 1.25em;
+  }
+
+  #intro .intro-head h1 {
+    font-size: 1.75em;
+    line-height: 1.2;
+  }
+
+  #intro .intro-head h2 {
+    font-size: 1.1em;
+  }
+}
+
 /* Spotlight video – mirrors ".spotlights > section > .image", which can't be
    reused here because main.js converts .image into a CSS background-image. */
 .spotlights > section > .media {
@@ -3073,6 +3130,7 @@ body.is-preload .spotlights > section > .media:before {
 #three .split .actions li {
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75em;
 }
 
