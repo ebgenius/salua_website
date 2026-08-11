@@ -35,10 +35,18 @@ const items = news.map(function (item) {
     button(item.video, 'Video'),
     button(item.linkedin, 'LinkedIn'),
   ].filter(Boolean).join(' ');
+  // Split a leading "JUN '26 - " off the title so the date can be styled as a
+  // label; titles without that prefix are left untouched. Keep this in step with
+  // the runtime renderer in index.html.
+  const m = item.title.match(/^([A-Za-z]{3} '\d{2})\s*-\s*([\s\S]+)$/);
+  const date = m ? '<span class="news-date">' + esc(m[1]) + '</span>' : '';
+  const title = esc(m ? m[2] : item.title);
   return [
     '              <li>',
-    '                <a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer"><p>' + esc(item.title) + '</p></a>',
-    btns ? '                <div class="news-buttons">' + btns + '</div>' : '',
+    '                ' + date + '<div class="news-item">',
+    '                  <a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer"><p>' + title + '</p></a>',
+    btns ? '                  <div class="news-buttons">' + btns + '</div>' : '',
+    '                </div>',
     '              </li>',
   ].filter(Boolean).join('\n');
 }).join('\n');
