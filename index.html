@@ -31,8 +31,8 @@
   <!-- Social sharing image -->
   <meta property="og:image" content="https://saluahamaza.eu/images/profile.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="3648" />
-  <meta property="og:image:height" content="4560" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1500" />
   <meta property="og:image:alt" content="Salua Hamaza – Associate Professor, Biomorphic Intelligence Lab" />
   <meta property="og:site_name" content="Salua Hamaza" />
   <meta property="og:locale" content="en_US" />
@@ -217,7 +217,7 @@
               <!-- Image Column -->
               <!-- If you want the image to be a link, wrap it in <a> -->
               <a href="https://www.tudelft.nl/en/staff/s.hamaza/" target="_blank" rel="noopener noreferrer">
-                <img src="images/profile.jpg" class="image fit" width="3648" height="4560" fetchpriority="high"
+                <img src="images/profile.webp" class="image fit" width="1000" height="1250" fetchpriority="high"
                   alt="Portrait of Salua Hamaza, Associate Professor of Aerial Robotics at TU Delft"
                   data-position="center center" />
               </a>
@@ -233,8 +233,8 @@
         <div class="content">
           <div class="inner">
             <h2>News</h2>
-            <!-- Rendered from data/news.json by tools/build-news.js; the script below
-                 refreshes it at runtime. Run `node tools/build-news.js` after editing the JSON. -->
+            <!-- Rendered from data/news.json by _tools/build-news.js; the script below
+                 refreshes it at runtime. Run `node _tools/build-news.js` after editing the JSON. -->
             <ul id="news-list">
               <!-- news:start -->
               <li>
@@ -293,10 +293,13 @@
     <!-- NOS article  -->
     <section class="wrapper style2 spotlights spotlight-reverse">
       <section>
-        <a href="https://www.tudelft.nl/en/2026/lr/flying-squirrel-drone-reshapes-drone-design" class="image"
-          target="_blank" rel="noopener noreferrer"><img src="images/spotlight/flying_squirrel.gif" loading="lazy"
-            width="640" height="480" title="SquirrelDrone in flight"
-            alt="SquirrelDrone, a flying-squirrel-inspired morphing drone, gliding in flight" /></a>
+        <!-- "media" rather than "image": the theme turns .image into a CSS background, which a <video> can't be -->
+        <a href="https://www.tudelft.nl/en/2026/lr/flying-squirrel-drone-reshapes-drone-design" class="media"
+          target="_blank" rel="noopener noreferrer">
+          <video src="images/spotlight/flying_squirrel.mp4" poster="images/spotlight/flying_squirrel-poster.webp"
+            width="640" height="480" autoplay muted loop playsinline preload="metadata"
+            aria-label="SquirrelDrone, a flying-squirrel-inspired morphing drone, gliding in flight"></video>
+        </a>
         <div class="content">
           <div class="inner">
             <h3>
@@ -322,7 +325,7 @@
     <section class="wrapper style2 spotlights">
       <section>
         <a href="https://www.tudelft.nl/en/2024/tu-delft/tu-delft-jointly-wins-in-xprize-rainforest-competition-in-brazil"
-          class="image" target="_blank" rel="noopener noreferrer"><img src="/images/spotlight/XPRIZE-drone.png"
+          class="image" target="_blank" rel="noopener noreferrer"><img src="/images/spotlight/XPRIZE-drone.webp"
             loading="lazy" width="754" height="630" title="XPRIZE Rainforest competition drone"
             alt="Drone used by the ETHBiodivX team in the XPRIZE Rainforest competition in Brazil" /></a>
         <div class="content">
@@ -350,7 +353,7 @@
       <section>
         <a href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/winning-imav2024-drone-competition/"
           class="image" target="_blank" rel="noopener noreferrer">
-          <img src="/images/spotlight/IMAV-2024-Drone-Competition.png" loading="lazy" width="768" height="576"
+          <img src="/images/spotlight/IMAV-2024-Drone-Competition.webp" loading="lazy" width="768" height="576"
             title="IMAV 2024 Drone Competition"
             alt="BioMorphic Intelligence Lab team winning the indoor IMAV 2024 drone competition in Bristol" />
         </a>
@@ -400,7 +403,7 @@
     <section class="wrapper style3 spotlights">
       <section>
         <div class="image">
-          <img src="images/research.jpg" loading="lazy" width="2500" height="1667"
+          <img src="images/research.webp" loading="lazy" width="1600" height="1067"
             alt="Aerial robotics research at the Biomorphic Intelligence Lab" data-position="center center" />
         </div>
         <div class="content">
@@ -474,7 +477,7 @@
                 <a href="https://www.tudelft.nl/staff/f.r.ruizvincueria/" class="image" target="_blank"
                   rel="noopener noreferrer">
                   <figure>
-                    <img src="/images/group/fernando.png" loading="lazy" title="Fernando Ruiz Vincueria"
+                    <img src="/images/group/fernando.webp" loading="lazy" title="Fernando Ruiz Vincueria"
                       alt="Fernando Ruiz Vincueria" />
                     <figcaption>
                       Fernando Ruiz Vincueria
@@ -560,7 +563,7 @@
                 <a href="https://www.tudelft.nl/staff/k.yuan.1/" class="image" target="_blank"
                   rel="noopener noreferrer">
                   <figure>
-                    <img src="/images/group/kangle.jpeg" loading="lazy" title="Kangle Yuan" alt="Kangle Yuan" />
+                    <img src="/images/group/kangle.webp" loading="lazy" title="Kangle Yuan" alt="Kangle Yuan" />
                     <figcaption>
                       Kangle Yuan
                     </figcaption>

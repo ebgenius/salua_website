@@ -7,7 +7,10 @@
  * to the JSON show up for visitors immediately. Run this before committing to
  * keep the static copy in sync:
  *
- *   node tools/build-news.js
+ *   node _tools/build-news.js
+ *
+ * Lives under an underscore so the GitHub Pages Jekyll build leaves it out of
+ * the published site.
  */
 const fs = require('fs');
 const path = require('path');

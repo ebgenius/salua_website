@@ -2953,6 +2953,57 @@ body.is-preload #sidebar nav ul li {
   vertical-align: middle;
 }
 
+/* Spotlight video – mirrors ".spotlights > section > .image", which can't be
+   reused here because main.js converts .image into a CSS background-image. */
+.spotlights > section > .media {
+  border-radius: 0;
+  display: block;
+  position: relative;
+  width: 25em;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.spotlights > section > .media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spotlights > section > .media:before {
+  transition: opacity 1s ease;
+  background: rgba(0, 91, 136, 0.9);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.spotlights > section.inactive > .media:before,
+body.is-preload .spotlights > section > .media:before {
+  opacity: 1;
+}
+
+@media screen and (max-width: 980px) {
+  .spotlights > section > .media {
+    width: 100%;
+    height: 50vh;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .spotlights > section > .media {
+    height: 50vh;
+    min-height: 15em;
+  }
+}
+
 /* Images carry width/height attributes so the browser can reserve their space
    before they load; keep them fluid so the attributes don't fix the height. */
 .image.fit,
