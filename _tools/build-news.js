@@ -62,5 +62,18 @@ if (!re.test(html)) {
 }
 
 const updated = html.replace(re, start + '\n' + items + '\n              ' + end);
-fs.writeFileSync(indexPath, updated);
-console.log('Rendered ' + news.length + ' news items into index.html');
+const changed = updated !== html;
+if (changed) fs.writeFileSync(indexPath, updated);
+console.log('Rendered ' + news.length + ' news items into index.html' + (changed ? '' : ' (no change)'));
+
+// Keep the sitemap's lastmod honest: bump it whenever the news content changes.
+if (changed) {
+  const sitemapPath = path.join(root, 'sitemap.xml');
+  const today = new Date().toISOString().slice(0, 10);
+  const sitemap = fs.readFileSync(sitemapPath, 'utf8');
+  const bumped = sitemap.replace(/<lastmod>[^<]*<\/lastmod>/, '<lastmod>' + today + '</lastmod>');
+  if (bumped !== sitemap) {
+    fs.writeFileSync(sitemapPath, bumped);
+    console.log('Updated sitemap.xml lastmod to ' + today);
+  }
+}
