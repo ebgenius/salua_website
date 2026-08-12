@@ -1,0 +1,52 @@
+[
+    {
+        "year": "2026",
+        "title": "A squirrel-inspired drone with enhanced stability, agility and maneuverability via whole-body morphing",
+        "authors": "Liming Zheng, Alexander van Zuijlen, Salua Hamaza",
+        "venue": "Nature Communications",
+        "url": "https://doi.org/10.1038/s41467-026-72822-w",
+        "pdf": "",
+        "video": "https://www.youtube.com/watch?v=37IV3vyoXtk",
+        "code": ""
+    },
+    {
+        "year": "2026",
+        "title": "Omnidirectional Dual-Arm Aerial Manipulator with Proprioceptive Contact Localization for Landing on Slanted Roofs",
+        "authors": "Martijn B. J. Brummelhuis, Nathan F. Lepora, Salua Hamaza",
+        "venue": "IEEE International Conference on Robotics and Automation (ICRA)",
+        "url": "https://arxiv.org/abs/2602.10703",
+        "pdf": "https://arxiv.org/pdf/2602.10703",
+        "video": "https://www.youtube.com/watch?v=V3gcCDMcqBQ",
+        "code": ""
+    },
+    {
+        "year": "2025",
+        "title": "A Tactile Feedback Approach to Path Recovery After High-Speed Impacts for Collision-Resilient Drones",
+        "authors": "Anton Bredenbeck, Teaya Yang, Salua Hamaza, Mark W. Mueller",
+        "venue": "Drones",
+        "url": "https://doi.org/10.3390/drones9110758",
+        "pdf": "",
+        "video": "https://www.youtube.com/watch?v=CMrgngliWX0",
+        "code": ""
+    },
+    {
+        "year": "2024",
+        "title": "A Biomorphic Whisker Sensor for Aerial Tactile Applications",
+        "authors": "Chaoxiang Ye, Guido De Croon, Salua Hamaza",
+        "venue": "IEEE International Conference on Robotics and Automation (ICRA)",
+        "url": "https://doi.org/10.1109/ICRA57147.2024.10610850",
+        "pdf": "",
+        "video": "",
+        "code": ""
+    },
+    {
+        "year": "2024",
+        "title": "ALBERO: Agile Landing on Branches for Environmental Robotics Operations",
+        "authors": "Liming Zheng, Salua Hamaza",
+        "venue": "IEEE Robotics and Automation Letters",
+        "url": "https://doi.org/10.1109/LRA.2024.3349914",
+        "pdf": "",
+        "video": "https://www.youtube.com/watch?v=krxqD5sjWZY",
+        "code": ""
+    }
+]

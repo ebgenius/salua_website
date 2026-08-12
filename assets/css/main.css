@@ -2933,14 +2933,14 @@ body.is-preload #sidebar nav ul li {
 /* News list – every row links out to another site, so the headline reads as a
    link (bright, external-link cue, underline on hover) instead of inheriting the
    dimmed body colour and the theme's dotted underline. */
-#news-list {
+.link-list {
   list-style: none;
   margin: 0 0 2em 0;
   padding: 0;
 }
 
 /* Date in its own column so headlines line up and wrapped lines stay clear of it. */
-#news-list > li {
+.link-list > li {
   display: grid;
   grid-template-columns: 4.5em minmax(0, 1fr);
   column-gap: 0.9em;
@@ -2949,19 +2949,19 @@ body.is-preload #sidebar nav ul li {
   border-top: solid 1px rgba(255, 255, 255, 0.12);
 }
 
-#news-list > li:first-child {
+.link-list > li:first-child {
   border-top: 0;
   padding-top: 0;
 }
 
 @media screen and (max-width: 736px) {
-  #news-list > li {
+  .link-list > li {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 0.2em;
   }
 }
 
-#news-list .news-date {
+.link-list .list-date {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8em;
   font-weight: bold;
@@ -2970,18 +2970,18 @@ body.is-preload #sidebar nav ul li {
   white-space: nowrap;
 }
 
-#news-list .news-item > a {
+.link-list .list-item > a {
   border-bottom: 0;
   color: #ffffff;
 }
 
-#news-list .news-item > a p {
+.link-list .list-item > a p {
   display: inline;
   margin: 0;
 }
 
 /* "opens another site" cue */
-#news-list .news-item > a p:after {
+.link-list .list-item > a p:after {
   content: "\f35d";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -2991,22 +2991,31 @@ body.is-preload #sidebar nav ul li {
   vertical-align: 0.15em;
 }
 
-#news-list .news-item > a:hover {
+.link-list .list-item > a:hover {
   color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 
-#news-list .news-item > a:hover p:after {
+.link-list .list-item > a:hover p:after {
   opacity: 1;
 }
 
-#news-list .news-buttons {
+.link-list .list-buttons {
   display: inline;
   margin-left: 0.6em;
 }
 
-#news-list .news-buttons .button {
+/* Authors / venue line under a publication title. */
+.link-list .list-meta {
+  display: block;
+  margin-top: 0.2em;
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.link-list .list-buttons .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
