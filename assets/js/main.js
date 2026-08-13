@@ -72,6 +72,13 @@
 
 					var	$this = $(this),
 						id = $this.attr('href'),
+						$section;
+
+					// Not an on-page anchor (sub-pages link back as "/#one")? Bail
+					// before jQuery tries to parse it as a selector and throws.
+						if (!id || id.charAt(0) != '#' || id.length < 2)
+							return;
+
 						$section = $(id);
 
 					// No section for this link? Bail.

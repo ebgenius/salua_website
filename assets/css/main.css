@@ -2816,25 +2816,45 @@ body.is-ie #sidebar > .inner {
   content: "";
   height: 0.2em;
   position: absolute;
-  right: 0;
+  left: 0;
   width: 100%;
 }
+/* The track: always present under every item. */
 #sidebar nav a:before {
   background: #006ca2;
 }
+/* The fill, darker than the bar itself, driven by --nav-progress (0-1) from
+   assets/js/nav-progress.js. Items already scrolled past stay full, so the nav
+   reads as one loading bar for the whole page as well as for each section.
+   Scaled from the left edge: transform is composited, where animating width
+   would relayout the bar on every scroll frame. */
 #sidebar nav a:after {
-  background-image: linear-gradient(to right, #005b88, #ffffff);
-  transition: max-width 0.2s ease;
-  max-width: 0;
+  background: #002e48;
+  transform: scaleX(var(--nav-progress, 0));
+  transform-origin: left center;
+  transition: transform 0.12s linear;
 }
 #sidebar nav a:hover {
   color: rgba(255, 255, 255, 0.55);
 }
-#sidebar nav a.active {
+/* The highlight follows the bar, not the theme's .active class: scrollex uses
+   different boundaries (mode "middle", ±20vh) than the progress calculation, so
+   driving both from .active would light up one label while filling another. */
+#sidebar nav a.is-current {
   color: #ffffff;
 }
-#sidebar nav a.active:after {
-  max-width: 100%;
+/* Without the progress script, fall back to the theme's original on/off bar. */
+html:not(.js-nav-progress) #sidebar nav a.active {
+  color: #ffffff;
+}
+html:not(.js-nav-progress) #sidebar nav a.active:after {
+  transform: scaleX(1);
+  transition: transform 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  #sidebar nav a:after {
+    transition: none;
+  }
 }
 body.is-preload #sidebar > .inner {
   opacity: 0;
@@ -2900,7 +2920,7 @@ body.is-preload #sidebar nav ul li {
 
 /* Intro */
 #intro {
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-image: url("/images/tudelft_logo.svg");
   background-position: left center;
   background-repeat: no-repeat;
@@ -3004,6 +3024,59 @@ body.is-preload #sidebar nav ul li {
 .link-list .list-buttons {
   display: inline;
   margin-left: 0.6em;
+}
+
+/* Sub-pages arrive via a full page load, which would replay the theme's
+   staggered nav entry every time you navigate. Show the nav immediately there;
+   only the home page plays the intro animation. */
+body[data-nav-current] #sidebar > .inner,
+body[data-nav-current] #sidebar nav > ul > li {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  transition-delay: 0s;
+}
+
+/* Sub-pages (marked by data-nav-current) can be shorter than the viewport;
+   keep the footer at the bottom instead of floating mid-screen. #sidebar is
+   position:fixed at every breakpoint, so it sits outside this flex context. */
+body[data-nav-current] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body[data-nav-current] #wrapper {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Let the section, not the body, fill the gap so its background reaches the footer. */
+body[data-nav-current] #wrapper > section {
+  flex: 1 0 auto;
+}
+
+body[data-nav-current] #footer {
+  flex-shrink: 0;
+}
+
+/* "there is more" link closing a list – archived news, full publication list. */
+.list-more {
+  margin: 1.25em 0 0 0;
+  font-size: 0.9em;
+}
+
+.list-more a {
+  border-bottom: 0;
+  color: #ffffff;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.list-more a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 /* Authors / venue line under a publication title. */
