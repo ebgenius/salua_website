@@ -2904,10 +2904,11 @@ body.is-preload #sidebar nav ul li {
     line-height: inherit;
     padding: 0;
   }
-  #sidebar nav a:after {
-    background-image: none;
-    background-color: #004e7b;
-  }
+  /* No :after override here: the fill color is the same at every width. The
+     theme used to paint it #004e7b — the sidebar's own background — which was
+     fine when :after was a gradient revealed by max-width, but leaves the
+     --nav-progress fill invisible, so scrolling only appeared to eat the light
+     track away from the left. */
 }
 /* Mobile top bar. Six uppercase labels stop fitting on one line below 736px, so
    the strip becomes a title plus a hamburger and the links drop down as a panel
@@ -3021,12 +3022,12 @@ html:not(.js-nav-toggle) #sidebar .nav-toggle {
   #sidebar .nav-toggle[aria-expanded=true]:before {
     content: "\f00d";
   }
-  /* A step darker than the bar, so the panel reads as an overlay rather than as
-     more page: at this width it sits on #005b88, which is nearly the bar's own
-     color. */
+  /* Same background as the bar, so the two read as one nav surface — and so the
+     progress track and fill keep the contrast they were picked for. The page
+     underneath is nearly this color, so the shadow does the separating. */
   #sidebar nav {
-    background: #003955;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.25);
+    background: #004e7b;
+    box-shadow: 0 0.5em 1.5em rgba(0, 0, 0, 0.45);
     height: auto;
     left: 0;
     max-height: calc(100vh - 3.5em);
@@ -3065,16 +3066,9 @@ html:not(.js-nav-toggle) #sidebar .nav-toggle {
     letter-spacing: 0.2em;
     padding: 0 1.65em;
   }
-  /* On the panel's own background the desktop track/fill pair reads as a row
-     divider that also shows how far into each section you are. */
-  #sidebar nav a:before {
-    background: rgba(255, 255, 255, 0.15);
-    height: 0.15em;
-  }
-  #sidebar nav a:after {
-    background: #ffffff;
-    height: 0.15em;
-  }
+  /* No track/fill override: the inherited pair doubles as the row divider, and
+     keeping one definition means the dark-fills-over-light effect is the same
+     whichever width you read the nav at. */
 }
 
 /* Intro */
