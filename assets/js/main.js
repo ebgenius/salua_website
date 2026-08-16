@@ -47,7 +47,11 @@
 	// Sidebar.
 		if ($sidebar.length > 0) {
 
-			var $sidebar_a = $sidebar.find('a');
+			// Scoped to the nav: the mobile bar's title link also lives in
+			// #sidebar, and must not join the active/scrollex bookkeeping (it
+			// points at #intro, which the HOME link already owns). It carries
+			// .scrolly in the markup, so it still scrolls smoothly.
+			var $sidebar_a = $sidebar.find('nav a');
 
 			$sidebar_a
 				.addClass('scrolly')
@@ -125,9 +129,12 @@
 			speed: 1000,
 			offset: function() {
 
-				// If <=large, >small, and sidebar is present, use its height as the offset.
+				// If <=large and the sidebar is present it sits across the top,
+				// so land the section below it rather than underneath. Includes
+				// <=small, where the sidebar is the mobile bar: its drop-down
+				// panel is absolutely positioned, so the height read here is
+				// the bar's whether the menu is open or closed.
 					if (breakpoints.active('<=large')
-					&&	!breakpoints.active('<=small')
 					&&	$sidebar.length > 0)
 						return $sidebar.height();
 

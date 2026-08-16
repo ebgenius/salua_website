@@ -2655,11 +2655,8 @@ body.is-ie .wrapper.fullscreen {
     padding-top: 3.5em;
   }
 }
-@media screen and (max-width: 736px) {
-  #sidebar + #wrapper {
-    padding-top: 0;
-  }
-}
+/* No <=736px override: the sidebar collapses to the mobile top bar there, which
+   is the same height and equally fixed, so the offset still applies. */
 #header + #wrapper > .wrapper > .inner {
   margin: 0 auto;
 }
@@ -2912,9 +2909,171 @@ body.is-preload #sidebar nav ul li {
     background-color: #004e7b;
   }
 }
+/* Mobile top bar. Six uppercase labels stop fitting on one line below 736px, so
+   the strip becomes a title plus a hamburger and the links drop down as a panel
+   beneath it. Markup is in _tools/partials/nav.html; assets/js/nav-toggle.js
+   flips .is-menu-open on #sidebar. Hidden above 736px, where the nav strip
+   itself is already the page chrome. */
+#sidebar .nav-bar {
+  display: none;
+}
+
+/* A hamburger that cannot open anything is worse than none: without the toggle
+   script the bar keeps the title and drops the button. */
+html:not(.js-nav-toggle) #sidebar .nav-toggle {
+  display: none;
+}
+
 @media screen and (max-width: 736px) {
   #sidebar {
+    display: block;
+    /* The panel hangs below the bar, outside its box. */
+    overflow: visible;
+    text-align: left;
+  }
+  #sidebar > .inner {
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+  }
+  /* The staggered entry animation would leave the bar blank until window.onload.
+     It is the only navigation at this width, so it is there from the first
+     paint. */
+  body.is-preload #sidebar > .inner {
+    opacity: 1;
+  }
+  body.is-preload #sidebar nav ul li {
+    transform: none;
+    opacity: 1;
+  }
+  #sidebar .nav-bar {
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    justify-content: space-between;
+    height: inherit;
+    line-height: inherit;
+    padding: 0 0.5em 0 1.25em;
+    width: 100%;
+  }
+  #sidebar .nav-title {
+    border: 0;
+    color: #ffffff;
+    font-size: 0.8em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  /* The theme styles every <button> as a bordered pill, with !important on the
+     border and color, so a plain icon button has to opt out explicitly. */
+  #sidebar .nav-toggle {
+    background: transparent;
+    border: 0 !important;
+    border-radius: 0;
+    box-shadow: none;
+    color: rgba(255, 255, 255, 0.55) !important;
+    cursor: pointer;
+    -moz-flex-shrink: 0;
+    -ms-flex-shrink: 0;
+    flex-shrink: 0;
+    font-size: 1em;
+    height: 2.75em;
+    letter-spacing: 0;
+    line-height: 2.75em;
+    min-width: 0;
+    padding: 0;
+    text-align: center;
+    transition: color 0.2s ease;
+    width: 2.75em;
+  }
+  /* margin-right comes from the theme's "icon + label" buttons and would push
+     the glyph off-centre in a square one. */
+  #sidebar .nav-toggle:before {
+    font-size: 1.25em;
+    margin-right: 0;
+  }
+  /* The pill's white wash-on-hover overlay. */
+  #sidebar .nav-toggle:after {
     display: none;
+  }
+  #sidebar .nav-toggle:hover, #sidebar .nav-toggle[aria-expanded=true] {
+    background: transparent;
+    color: #ffffff !important;
+  }
+  /* The browser default ring sticks around after a tap, framing the icon for as
+     long as the menu is open. Keyboard focus still gets a ring. */
+  #sidebar .nav-toggle:focus {
+    outline: 0;
+  }
+  #sidebar .nav-toggle:focus-visible {
+    outline: solid 2px rgba(255, 255, 255, 0.75);
+    outline-offset: -0.5em;
+  }
+  /* fa-times while open, so the icon says what the next tap does. */
+  #sidebar .nav-toggle[aria-expanded=true]:before {
+    content: "\f00d";
+  }
+  /* A step darker than the bar, so the panel reads as an overlay rather than as
+     more page: at this width it sits on #005b88, which is nearly the bar's own
+     color. */
+  #sidebar nav {
+    background: #003955;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.25);
+    height: auto;
+    left: 0;
+    max-height: calc(100vh - 3.5em);
+    opacity: 0;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    transform: translateY(-0.5em);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    visibility: hidden;
+    width: 100%;
+  }
+  #sidebar.is-menu-open nav {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+  #sidebar nav ul {
+    display: block;
+    height: auto;
+    margin: 0;
+  }
+  #sidebar nav ul li {
+    height: auto;
+    margin: 0;
+  }
+  /* line-height is inherited from #sidebar as a resolved length (3.5em of its
+     own font size), so each row keeps a full-bar tap target regardless of the
+     smaller label size. */
+  #sidebar nav a {
+    /* The sidebar's idle grey is legible against a full column of links on a
+       desktop; as six rows on a phone it needs the contrast. */
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75em;
+    height: auto;
+    letter-spacing: 0.2em;
+    padding: 0 1.65em;
+  }
+  /* On the panel's own background the desktop track/fill pair reads as a row
+     divider that also shows how far into each section you are. */
+  #sidebar nav a:before {
+    background: rgba(255, 255, 255, 0.15);
+    height: 0.15em;
+  }
+  #sidebar nav a:after {
+    background: #ffffff;
+    height: 0.15em;
   }
 }
 

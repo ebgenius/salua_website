@@ -317,7 +317,17 @@
   <!-- nav:start -->
   <section id="sidebar">
     <div class="inner">
-      <nav>
+      <!-- Mobile top bar (<=736px only). Wider viewports show the nav itself as
+           the page chrome — a fixed sidebar on desktop, a horizontal strip down
+           to 737px — and hide this bar. Keeping it inside #sidebar means the
+           page still has exactly one <nav>; assets/js/nav-toggle.js opens and
+           closes it. -->
+      <div class="nav-bar">
+        <a class="nav-title scrolly" href="#intro">Prof. Salua Hamaza</a>
+        <button class="nav-toggle icon solid fa-bars" type="button" aria-controls="nav-menu" aria-expanded="false"
+          aria-label="Open menu"></button>
+      </div>
+      <nav id="nav-menu">
         <ul>
           <li><a href="#intro">HOME</a></li>
           <li><a href="#one">NEWS</a></li>
@@ -926,6 +936,7 @@
   <script src="/assets/js/util.js"></script>
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/nav-progress.js"></script>
+  <script src="/assets/js/nav-toggle.js"></script>
   <script src="/assets/js/lists.js"></script>
   <!-- scripts:end -->
   <script>
