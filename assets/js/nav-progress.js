@@ -6,7 +6,7 @@
  * over cleanly at each boundary.
  *
  * Each nav item owns everything from its own section down to the next linked
- * section: the research highlights sit between #two and #publications without
+ * section: the research highlights sit between #two and #three without
  * ids of their own, and the RESEARCH bar should keep filling across them.
  *
  * On a sub-page the nav's target sections don't exist, so the link named by
