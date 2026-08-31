@@ -26,20 +26,20 @@
   <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
   <!-- head-common:end -->
-  <title>News archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft</title>
-  <meta property="og:title" content="News archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft" />
+  <title>Research archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft</title>
+  <meta property="og:title" content="Research archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft" />
   <meta name="description"
-    content="Earlier news, papers, awards and press coverage from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft." />
+    content="Earlier research topics and highlights from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft." />
   <meta property="og:description"
-    content="Earlier news, papers, awards and press coverage from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft." />
+    content="Earlier research topics and highlights from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://saluahamaza.eu/news-archive/" />
+  <meta property="og:url" content="https://saluahamaza.eu/research-archive/" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="News archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft" />
+  <meta name="twitter:title" content="Research archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft" />
   <meta name="twitter:description"
-    content="Earlier news, papers, awards and press coverage from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft." />
+    content="Earlier research topics and highlights from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft." />
   <meta name="twitter:image" content="https://saluahamaza.eu/images/profile.jpg" />
-  <link rel="canonical" href="https://saluahamaza.eu/news-archive/" />
+  <link rel="canonical" href="https://saluahamaza.eu/research-archive/" />
   <meta property="og:image" content="https://saluahamaza.eu/images/profile.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
@@ -51,18 +51,18 @@
       "@graph": [
         {
           "@type": "CollectionPage",
-          "@id": "https://saluahamaza.eu/news-archive/#webpage",
-          "url": "https://saluahamaza.eu/news-archive/",
-          "name": "News archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft",
-          "description": "Earlier news, papers, awards and press coverage from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft.",
+          "@id": "https://saluahamaza.eu/research-archive/#webpage",
+          "url": "https://saluahamaza.eu/research-archive/",
+          "name": "Research archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft",
+          "description": "Earlier research topics and highlights from Prof. Salua Hamaza and the BioMorphic Intelligence Lab at TU Delft.",
           "inLanguage": "en",
           "isPartOf": { "@id": "https://saluahamaza.eu/#website" },
           "about": { "@id": "https://saluahamaza.eu/#person" },
-          "breadcrumb": { "@id": "https://saluahamaza.eu/news-archive/#breadcrumb" }
+          "breadcrumb": { "@id": "https://saluahamaza.eu/research-archive/#breadcrumb" }
         },
         {
           "@type": "BreadcrumbList",
-          "@id": "https://saluahamaza.eu/news-archive/#breadcrumb",
+          "@id": "https://saluahamaza.eu/research-archive/#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -73,7 +73,7 @@
             {
               "@type": "ListItem",
               "position": 2,
-              "name": "News archive"
+              "name": "Research archive"
             }
           ]
         }
@@ -83,9 +83,9 @@
 </head>
 
 <!-- data-nav-current tells assets/js/nav-progress.js which nav item this page
-     belongs to, so the NEWS bar fills with this page's scroll. -->
+     belongs to, so the RESEARCH bar fills with this page's scroll. -->
 
-<body class="is-preload" data-nav-current="#one">
+<body class="is-preload" data-nav-current="#two">
   <!-- Sidebar. Shared with every page – edit _tools/partials/nav.html, then run
        `node _tools/build-lists.js`. -->
   <!-- nav:start -->
@@ -117,49 +117,57 @@
 
   <!-- Wrapper -->
   <div id="wrapper">
-    <section id="archive" class="wrapper style2 spotlights fade-up">
+    <!-- Archiving a research topic: move its whole
+         `<section class="wrapper style… spotlights …">` block here from index.html,
+         keeping it verbatim, then re-check the alternation on *both* pages – no two
+         adjacent sections may share a style2/style3 background, and `spotlight-reverse`
+         should flip the image side from one section to the next. -->
+    <section id="archive" class="wrapper style3 spotlights fade-up">
       <section>
         <div class="content">
           <div class="inner">
-            <h1>News archive</h1>
+            <h1>Research archive</h1>
             <p>
-              Earlier news, papers, awards and press coverage from the BioMorphic
-              Intelligence Lab. The most recent items stay on the
-              <a href="/#one">home page</a>.
+              Earlier research topics and highlights from the BioMorphic
+              Intelligence Lab. The current ones stay on the
+              <a href="/#two">home page</a>.
             </p>
-            <!-- Rendered from data/news.json by _tools/build-lists.js (entries flagged
-                 "archived": true); assets/js/lists.js refreshes it at runtime. -->
-            <ul id="news-archive-list" class="link-list" data-list="news" data-filter="archived">
-              <!-- news-archived:start -->
-              <li>
-                <span class="list-date">JAN '26</span><div class="list-item">
-                  <a href="https://www.wildbotics.eu/home" target="_blank" rel="noopener noreferrer"><p>🚀 🌿 Wildbotics is here! 🦁🦒🤖</p></a>
-                  <div class="list-buttons"><a href="https://www.linkedin.com/posts/salua-hamaza_robotics-computerscience-ecology-share-7402467012570005504-wwkj/?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAABVVUN8B46Tmq1aBXhWUIeHBo4a8u8muZ3U" class="button small" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
-                </div>
-              </li>
-              <li>
-                <span class="list-date">JAN '25</span><div class="list-item">
-                  <a href="https://www.tudelft.nl/en/2025/lr/salua-hamaza-new-faculty-diversity-inclusion-officer" target="_blank" rel="noopener noreferrer"><p>Salua Hamaza new Faculty Diversity &amp; Inclusion Officer</p></a>
-                </div>
-              </li>
-              <li>
-                <span class="list-date">SEP '24</span><div class="list-item">
-                  <a href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/winning-imav2024-drone-competition" target="_blank" rel="noopener noreferrer"><p>Winning IMAV 2024 drone competition!</p></a>
-                </div>
-              </li>
-              <li>
-                <span class="list-date">SEP '23</span><div class="list-item">
-                  <a href="https://delta.tudelft.nl/en/article/ai-3-it-bird-it-drone" target="_blank" rel="noopener noreferrer"><p>AI #3: Is it a bird? Is it a drone?</p></a>
-                </div>
-              </li>
-              <li>
-                <span class="list-date">AUG '23</span><div class="list-item">
-                  <a href="https://www.tudelft.nl/en/2023/lr/veni-grant-for-aerial-robots-in-a-tangible-world-drones-with-the-sense-of-touch-act-upon-their-surroundings" target="_blank" rel="noopener noreferrer"><p>Veni grant for 'Aerial Robots in a Tangible World: Drones with the Sense of Touch Act upon Their Surroundings'</p></a>
-                </div>
-              </li>
-              <!-- news-archived:end -->
-            </ul>
-            <p class="list-more"><a href="/#one">&larr; Back to latest news</a></p>
+            <!-- Kept here rather than after the last topic, so it never has to move
+                 when another section is archived. -->
+            <p class="list-more"><a href="/#two">&larr; Back to research</a></p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- IMAV 2024 Drone Competition -->
+    <section class="wrapper style2 spotlights spotlight-reverse">
+      <section>
+        <a href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/winning-imav2024-drone-competition/"
+          class="image" target="_blank" rel="noopener noreferrer">
+          <img src="/images/spotlight/IMAV-2024-Drone-Competition.webp" loading="lazy" width="768" height="576"
+            title="IMAV 2024 Drone Competition"
+            alt="BioMorphic Intelligence Lab team winning the indoor IMAV 2024 drone competition in Bristol" />
+        </a>
+        <div class="content">
+          <div class="inner">
+            <h3>
+              <a href="https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/winning-imav2024-drone-competition/"
+                target="_blank" rel="noopener noreferrer">Winning IMAV 2024 drone competition!</a>
+            </h3>
+            <p>
+              The BioMorphic Lab were at the International Micro Air Vehicle
+              (IMAV) Conference in Bristol from September 16th to 20th 2024.
+              IMAV is special since it is not only a conference, but also a
+              drone competition! This year’s theme revolved around wildlife
+              preservation, stimulating teams to use drones in support of
+              wildlife by observing them in varying situations! The
+              competition was divided in an indoor and an outdoor part. The
+              BioMorphic Lab participated and won in the indoor competition,
+              with support from the
+              <a href="https://www.tudelft.nl/robotics-institute">TU Delft Robotics Institute</a>
+              !
+            </p>
           </div>
         </div>
       </section>

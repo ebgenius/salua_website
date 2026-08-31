@@ -36,6 +36,7 @@ const esc = (s) => String(s)
 const pages = [
   { file: 'index.html', loc: SITE + '/', sub: false },
   { file: 'news-archive/index.html', loc: SITE + '/news-archive/', sub: true },
+  { file: 'research-archive/index.html', loc: SITE + '/research-archive/', sub: true },
 ];
 
 // ------------------------------------------------------------------ rendering
@@ -82,7 +83,7 @@ const archivedNews = news.filter((n) => n.archived === true);
 
 // Only offer the archive link once something is actually archived.
 const archiveLink = archivedNews.length
-  ? '              <p class="list-more"><a href="/news-archive/">Archived news &rarr;</a></p>'
+  ? '              <p class="list-more"><a href="/news-archive/">News archive &rarr;</a></p>'
   : '';
 
 // ------------------------------------------------ publications JSON-LD graph
