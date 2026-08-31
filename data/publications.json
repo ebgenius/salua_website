@@ -1,11 +1,21 @@
 [
     {
         "year": "2026",
+        "title": "Aerial tactile perching via an anthropomorphic hand with embodied soft tactile receptors",
+        "authors": "Anton Bredenbeck, Anish Jadoenathmisier, Salua Hamaza",
+        "venue": "Nature NPJ Robotics",
+        "url": "https://doi.org/10.1038/s44182-026-00109-9",
+        "pdf": "https://www.nature.com/articles/s44182-026-00109-9.pdf",
+        "video": "",
+        "code": ""
+    },
+    {
+        "year": "2026",
         "title": "A squirrel-inspired drone with enhanced stability, agility and maneuverability via whole-body morphing",
         "authors": "Liming Zheng, Alexander van Zuijlen, Salua Hamaza",
         "venue": "Nature Communications",
         "url": "https://doi.org/10.1038/s41467-026-72822-w",
-        "pdf": "",
+        "pdf": "https://www.nature.com/articles/s41467-026-72822-w.pdf",
         "video": "https://www.youtube.com/watch?v=37IV3vyoXtk",
         "code": ""
     },
@@ -13,8 +23,8 @@
         "year": "2026",
         "title": "Omnidirectional Dual-Arm Aerial Manipulator with Proprioceptive Contact Localization for Landing on Slanted Roofs",
         "authors": "Martijn B. J. Brummelhuis, Nathan F. Lepora, Salua Hamaza",
-        "venue": "IEEE International Conference on Robotics and Automation (ICRA)",
-        "url": "https://arxiv.org/abs/2602.10703",
+        "venue": "IEEE International Conference on Robotics and Automation (ICRA) in Vienna",
+        "url": "https://doi.org/10.48550/arXiv.2602.10703",
         "pdf": "https://arxiv.org/pdf/2602.10703",
         "video": "https://www.youtube.com/watch?v=V3gcCDMcqBQ",
         "code": ""
@@ -25,7 +35,7 @@
         "authors": "Anton Bredenbeck, Teaya Yang, Salua Hamaza, Mark W. Mueller",
         "venue": "Drones",
         "url": "https://doi.org/10.3390/drones9110758",
-        "pdf": "",
+        "pdf": "https://www.mdpi.com/2504-446X/9/11/758/pdf?version=1762163279",
         "video": "https://www.youtube.com/watch?v=CMrgngliWX0",
         "code": ""
     },
@@ -33,7 +43,7 @@
         "year": "2024",
         "title": "A Biomorphic Whisker Sensor for Aerial Tactile Applications",
         "authors": "Chaoxiang Ye, Guido De Croon, Salua Hamaza",
-        "venue": "IEEE International Conference on Robotics and Automation (ICRA)",
+        "venue": "IEEE International Conference on Robotics and Automation (ICRA) in Japan",
         "url": "https://doi.org/10.1109/ICRA57147.2024.10610850",
         "pdf": "",
         "video": "",

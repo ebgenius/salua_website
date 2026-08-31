@@ -1,6 +1,13 @@
 [
     {
-        "title": "OCT '26 - Drone International Symposium",
+        "title": "AUG '26 - Nature npj robotics published our research article titled \"Aerial Tactile Perching via an Anthropomorphic Hand with Embodied Soft Tactile Receivers\" 🫴🤖",
+        "url": "https://www.tudelft.nl/en/2026/lr/like-a-bird-this-drone-feels-its-way-to-a-safe-landing",
+        "article": "https://www.nature.com/articles/s44182-026-00109-9",
+        "linkedin": "https://lnkd.in/p/eGbcSkdh",
+        "video": ""
+    },
+    {
+        "title": "JUN '26 - Drone International Symposium announced for October 2026",
         "url": "https://www.internationalsymposium.it",
         "article": "",
         "linkedin": "https://www.linkedin.com/posts/salua-hamaza_drone-share-7492324882140012544-R3_O/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABVVUN8B46Tmq1aBXhWUIeHBo4a8u8muZ3U",
@@ -25,7 +32,8 @@
         "url": "https://www.wildbotics.eu/home",
         "article": "",
         "linkedin": "https://www.linkedin.com/posts/salua-hamaza_robotics-computerscience-ecology-share-7402467012570005504-wwkj/?utm_source=share&utm_medium=member_desktop&rcm=ACoAABVVUN8B46Tmq1aBXhWUIeHBo4a8u8muZ3U",
-        "video": ""
+        "video": "",
+        "archived": true
     },
     {
         "title": "JAN '26 - Drones inspired to Nature documentary on live TV",
@@ -46,7 +54,8 @@
         "url": "https://www.tudelft.nl/en/2025/lr/salua-hamaza-new-faculty-diversity-inclusion-officer",
         "linkedin": "",
         "video": "",
-        "article": ""
+        "article": "",
+        "archived": true
     },
     {
         "title": "NOV '24 - CNN features the research of the Biomorphic Intelligence lab!",
