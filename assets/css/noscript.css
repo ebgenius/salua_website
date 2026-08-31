@@ -25,4 +25,15 @@
 #sidebar nav > ul > li {
   transform: none !important;
   opacity: 1 !important;
+}
+
+/* Archive entry. Its open state is a class added by assets/js/nav-archive.js, so
+   without JS it would stay collapsed on the very page it names. Drop the grid
+   and show it outright – one pair per archive, because CSS cannot match the
+   <li>'s data-archive against the <body>'s. */
+body[data-archive=news] #sidebar nav > ul > li.nav-archive[data-archive=news],
+body[data-archive=research] #sidebar nav > ul > li.nav-archive[data-archive=research] {
+  display: block !important;
+  visibility: visible !important;
+  transition: none !important;
 }/*# sourceMappingURL=noscript.css.map */

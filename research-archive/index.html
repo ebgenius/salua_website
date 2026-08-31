@@ -25,6 +25,20 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
   <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+  <!-- Returning from an archive page: hand the key over to assets/js/nav-archive.js
+       and tell main.css to skip the nav's staggered intro. This has to run before
+       the first paint – a script at the end of <body> would let one frame of the
+       intro through – so it is inline here rather than in nav-archive.js. -->
+  <script>
+    try {
+      var navArchiveKey = sessionStorage.getItem('nav:archive-exit');
+      if (navArchiveKey) {
+        sessionStorage.removeItem('nav:archive-exit');
+        window.navArchiveReturn = navArchiveKey;
+        document.documentElement.className += (document.documentElement.className ? ' ' : '') + 'nav-archive-return';
+      }
+    } catch (e) { /* sessionStorage throws outright in some privacy modes */ }
+  </script>
   <!-- head-common:end -->
   <title>Research archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft</title>
   <meta property="og:title" content="Research archive – Salua Hamaza | Biomorphic Intelligence Lab, TU Delft" />
@@ -83,9 +97,11 @@
 </head>
 
 <!-- data-nav-current tells assets/js/nav-progress.js which nav item this page
-     belongs to, so the RESEARCH bar fills with this page's scroll. -->
+     belongs to, so that item's bar fills with this page's scroll – here the
+     ARCHIVE entry itself, which leaves RESEARCH above it showing a full bar.
+     data-archive names the nav entry assets/js/nav-archive.js slides open. -->
 
-<body class="is-preload" data-nav-current="#two">
+<body class="is-preload" data-nav-current="/research-archive/" data-archive="research">
   <!-- Sidebar. Shared with every page – edit _tools/partials/nav.html, then run
        `node _tools/build-lists.js`. -->
   <!-- nav:start -->
@@ -101,11 +117,19 @@
         <button class="nav-toggle icon solid fa-bars" type="button" aria-controls="nav-menu" aria-expanded="false"
           aria-label="Open menu"></button>
       </div>
+      <!-- The two .nav-archive entries ship on every page, collapsed. They have to
+           already be in the DOM on the home page for assets/js/nav-archive.js to
+           play the closing slide when you come back from an archive page. Their
+           hrefs start with "/" so the build's "#" -> "/#" sub-page rewrite skips
+           them. Delays in the intro cascade are keyed to these positions – see the
+           .nav-archive block in assets/css/main.css before reordering this list. -->
       <nav id="nav-menu">
         <ul>
           <li><a href="/#intro">HOME</a></li>
           <li><a href="/#one">NEWS</a></li>
+          <li class="nav-archive" data-archive="news"><a href="/news-archive/">Archive</a></li>
           <li><a href="/#two">RESEARCH</a></li>
+          <li class="nav-archive" data-archive="research"><a href="/research-archive/">Archive</a></li>
           <li><a href="/#three">GROUP</a></li>
           <li><a href="/#publications">PUBLICATIONS</a></li>
           <li><a href="/#four">CONTACT</a></li>
@@ -195,6 +219,7 @@
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/nav-progress.js"></script>
   <script src="/assets/js/nav-toggle.js"></script>
+  <script src="/assets/js/nav-archive.js"></script>
   <script src="/assets/js/lists.js"></script>
   <!-- scripts:end -->
 </body>

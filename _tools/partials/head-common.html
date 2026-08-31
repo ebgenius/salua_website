@@ -15,3 +15,17 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
   <link rel="icon" href="/images/favicon/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/images/favicon/favicon.ico" />
+  <!-- Returning from an archive page: hand the key over to assets/js/nav-archive.js
+       and tell main.css to skip the nav's staggered intro. This has to run before
+       the first paint – a script at the end of <body> would let one frame of the
+       intro through – so it is inline here rather than in nav-archive.js. -->
+  <script>
+    try {
+      var navArchiveKey = sessionStorage.getItem('nav:archive-exit');
+      if (navArchiveKey) {
+        sessionStorage.removeItem('nav:archive-exit');
+        window.navArchiveReturn = navArchiveKey;
+        document.documentElement.className += (document.documentElement.className ? ' ' : '') + 'nav-archive-return';
+      }
+    } catch (e) { /* sessionStorage throws outright in some privacy modes */ }
+  </script>

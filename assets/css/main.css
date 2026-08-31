@@ -3181,9 +3181,10 @@ html:not(.js-nav-toggle) #sidebar .nav-toggle {
 
 /* Sub-pages arrive via a full page load, which would replay the theme's
    staggered nav entry every time you navigate. Show the nav immediately there;
-   only the home page plays the intro animation. */
+   only the home page plays the intro animation. .nav-archive is excluded: it is
+   the one item that *should* animate on a sub-page, sliding open on arrival. */
 body[data-nav-current] #sidebar > .inner,
-body[data-nav-current] #sidebar nav > ul > li {
+body[data-nav-current] #sidebar nav > ul > li:not(.nav-archive) {
   opacity: 1;
   transform: none;
   transition: none;
@@ -3463,5 +3464,162 @@ body.is-preload .spotlights > section > .media:before {
   font-size: 0.9em;
   line-height: 1.4;
   overflow-wrap: break-word;
+}
+/* ---------------------------------------------------------------- nav archive
+
+   A collapsed ARCHIVE entry sits after NEWS and after RESEARCH on every page
+   (_tools/partials/nav.html). assets/js/nav-archive.js adds .is-open to the one
+   whose page you are on, and – arriving back on the home page – opens it and
+   immediately drops it again so it slides shut.
+
+   The reveal animates `grid-template-*: 0fr -> 1fr`, which interpolates to the
+   *content's* own size; a max-width/height transition would have to guess a
+   target and would finish early or clip. A browser too old to interpolate fr
+   units simply shows and hides the entry with no slide.
+
+   Spacing lives in the <a>'s padding, never the <li>'s margin, so the entry
+   sits flush against the item it belongs to. The padding animates alongside the
+   track: an fr track can never shrink below its item's automatic minimum, and
+   padding is part of that minimum (min-width/min-height: 0 only zero out the
+   text), so leaving it in place would strand a ~7px sliver between NEWS and
+   RESEARCH while the entry is shut. */
+#sidebar nav > ul > li.nav-archive {
+  display: grid;
+  grid-template-rows: 0fr;
+  margin: 0;
+  opacity: 0;
+  transform: translateX(1em);
+  visibility: hidden;
+  /* The delay is set inside the shorthand: a separate transition-delay would
+     lose to the intro cascade's :nth-child rules above. visibility flips only
+     once the slide has finished, so the entry stays focusable exactly as long
+     as it is on screen. */
+  transition: grid-template-rows 0.35s ease, opacity 0.25s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+}
+
+#sidebar nav > ul > li.nav-archive.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: grid-template-rows 0.35s ease, opacity 0.25s ease 0.1s, transform 0.35s ease, visibility 0s;
+}
+
+/* Lets nav-archive.js put the entry into its open state without animating, so
+   the closing slide on the home page starts from a settled layout. */
+#sidebar nav > ul > li.nav-archive.no-anim,
+#sidebar nav > ul > li.nav-archive.no-anim > a {
+  transition: none;
+}
+
+/* min-*: 0 and overflow are what let the grid track actually squeeze to zero. */
+#sidebar nav > ul > li.nav-archive > a {
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  /* A rank below the six section links: smaller, dimmer, tighter. */
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 0.5em;
+  letter-spacing: 0.18em;
+  padding: 0;
+  transition: padding 0.35s ease, color 0.2s ease;
+}
+
+#sidebar nav > ul > li.nav-archive.is-open > a {
+  padding: 0.9em 0;
+}
+
+#sidebar nav > ul > li.nav-archive > a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Restated because the selector above outranks "#sidebar nav a.is-current". */
+#sidebar nav > ul > li.nav-archive > a.is-current {
+  color: #ffffff;
+}
+
+/* The two extra <li>s shift the intro cascade, leaving a dead beat where the
+   collapsed entries sit. Re-map so the six visible items keep an even
+   0.45/0.65/0.85/1.05/1.25/1.45s. Positions: 1 HOME, 2 NEWS, 3 archive,
+   4 RESEARCH, 5 archive, 6 GROUP, 7 PUBLICATIONS, 8 CONTACT – re-check these
+   if the nav list in _tools/partials/nav.html is reordered. */
+#sidebar nav > ul > li:nth-child(4) {
+  transition-delay: 0.85s;
+}
+
+#sidebar nav > ul > li:nth-child(6) {
+  transition-delay: 1.05s;
+}
+
+#sidebar nav > ul > li:nth-child(7) {
+  transition-delay: 1.25s;
+}
+
+#sidebar nav > ul > li:nth-child(8) {
+  transition-delay: 1.45s;
+}
+
+/* Coming back from an archive page (flag read by the inline script in
+   _tools/partials/head-common.html before the first paint): the nav is already
+   where you left it, so skip the staggered intro entirely and let the archive
+   entry's own slide be the only motion. */
+html.nav-archive-return body.is-preload #sidebar > .inner {
+  opacity: 1;
+  transition: none;
+}
+
+html.nav-archive-return body.is-preload #sidebar nav > ul > li:not(.nav-archive) {
+  opacity: 1;
+  transform: none;
+  transition: none;
+  transition-delay: 0s;
+}
+
+/* Horizontal strip: the entry pushes the items to its right sideways instead of
+   opening a new row. */
+@media screen and (max-width: 1280px) {
+  #sidebar nav > ul > li.nav-archive {
+    grid-template-rows: 1fr;
+    grid-template-columns: 0fr;
+    transform: none;
+    transition: grid-template-columns 0.35s ease, opacity 0.25s ease, visibility 0s linear 0.35s;
+  }
+  #sidebar nav > ul > li.nav-archive.is-open {
+    grid-template-columns: 1fr;
+    transition: grid-template-columns 0.35s ease, opacity 0.25s ease 0.1s, visibility 0s;
+  }
+  /* Sits 0.9em off its parent rather than the 2em between top-level items. */
+  #sidebar nav > ul > li.nav-archive.is-open > a {
+    padding: 0 0 0 0.9em;
+  }
+}
+
+/* Drop-down panel: a row again, indented under the item it belongs to. */
+@media screen and (max-width: 736px) {
+  #sidebar nav > ul > li.nav-archive {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease, opacity 0.25s ease, visibility 0s linear 0.35s;
+  }
+  #sidebar nav > ul > li.nav-archive.is-open {
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.35s ease, opacity 0.25s ease 0.1s, visibility 0s;
+  }
+  #sidebar nav > ul > li.nav-archive > a {
+    font-size: 0.62em;
+  }
+  #sidebar nav > ul > li.nav-archive.is-open > a {
+    padding: 0 1.65em 0 2.9em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #sidebar nav > ul > li.nav-archive,
+  #sidebar nav > ul > li.nav-archive.is-open,
+  #sidebar nav > ul > li.nav-archive > a,
+  #sidebar nav > ul > li.nav-archive.is-open > a {
+    transition: none;
+  }
 }
 /*# sourceMappingURL=main.css.map */

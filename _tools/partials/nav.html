@@ -10,11 +10,19 @@
         <button class="nav-toggle icon solid fa-bars" type="button" aria-controls="nav-menu" aria-expanded="false"
           aria-label="Open menu"></button>
       </div>
+      <!-- The two .nav-archive entries ship on every page, collapsed. They have to
+           already be in the DOM on the home page for assets/js/nav-archive.js to
+           play the closing slide when you come back from an archive page. Their
+           hrefs start with "/" so the build's "#" -> "/#" sub-page rewrite skips
+           them. Delays in the intro cascade are keyed to these positions – see the
+           .nav-archive block in assets/css/main.css before reordering this list. -->
       <nav id="nav-menu">
         <ul>
           <li><a href="#intro">HOME</a></li>
           <li><a href="#one">NEWS</a></li>
+          <li class="nav-archive" data-archive="news"><a href="/news-archive/">Archive</a></li>
           <li><a href="#two">RESEARCH</a></li>
+          <li class="nav-archive" data-archive="research"><a href="/research-archive/">Archive</a></li>
           <li><a href="#three">GROUP</a></li>
           <li><a href="#publications">PUBLICATIONS</a></li>
           <li><a href="#four">CONTACT</a></li>
