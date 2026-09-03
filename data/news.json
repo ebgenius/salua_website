@@ -1,5 +1,12 @@
 [
     {
+        "title": "SEP '26 - Drones navigating by touch: ERC Starting Grant for Salua Hamaza",
+        "url": "https://www.tudelft.nl/en/2026/lr/drones-navigating-by-touch-erc-starting-grant-for-salua-hamaza",
+        "linkedin": "https://lnkd.in/p/e8PdptZA",
+        "video": "",
+        "article": ""
+    },
+    {
         "title": "AUG '26 - Nature npj robotics published our research article titled \"Aerial Tactile Perching via an Anthropomorphic Hand with Embodied Soft Tactile Receivers\" 🫴🤖",
         "url": "https://www.tudelft.nl/en/2026/lr/like-a-bird-this-drone-feels-its-way-to-a-safe-landing",
         "article": "https://www.nature.com/articles/s44182-026-00109-9",
@@ -69,7 +76,8 @@
         "url": "https://www.tudelft.nl/ai/biomorphic-intelligence-lab/news-1/messages/biomorphic-intelligence-lab-attends-iros-2024-in-abu-dhabi",
         "linkedin": "",
         "video": "",
-        "article": ""
+        "article": "",
+        "archived": true
     },
     {
         "title": "SEP '24 - Winning IMAV 2024 drone competition!",
